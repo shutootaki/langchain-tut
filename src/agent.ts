@@ -16,34 +16,36 @@ export const runAgent = async () => {
     true
   );
 
-  // first
+  // first web検索
   const firstPrompt = "尾田栄一郎 ONE PIECE 最新刊の巻数";
-  const firrsRes = await executor.call({ input: firstPrompt });
+  const firstRes = await executor.call({ input: firstPrompt });
   console.log("User1", firstPrompt);
-  console.log("Agent1", firrsRes.output);
+  console.log("Agent1", firstRes.output);
 
-  // second
+  // second 数値取り出し
   const secondPrompt = new PromptTemplate({
     inputVariables: ["text"],
     template:
       "「{text}」Think step-by-step only of the number of the volume from the text here, and output it precisely.",
   });
   const secondRes = await llm.call(
-    await secondPrompt.format({ text: firrsRes.output })
+    // firstのレスポンスをsecondのプロンプトに設定
+    await secondPrompt.format({ text: firstRes.output })
   );
   console.log("User2", secondPrompt.template);
   console.log("Agent2", secondRes);
 
-  // third
+  // third 計算
   const thirdPrompt = new PromptTemplate({
     inputVariables: ["volumes"],
     template: "{volumes}に5を掛けると？",
   });
   const thirdRes = await executor.call({
+    // secondのレスポンスをthirdのプロンプトに設定
     input: await thirdPrompt.format({ volumes: secondRes }),
   });
   console.log("User3", thirdPrompt.template);
   console.log("Agent3", thirdRes.output);
 };
 
-// runAgent();
+runAgent();
