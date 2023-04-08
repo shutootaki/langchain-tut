@@ -4,7 +4,7 @@ import { OpenAI } from "langchain/llms";
 export const runTemplate = async () => {
   const template = new PromptTemplate({
     inputVariables: ["menu"],
-    template: "{menu}を作る作るために必要な材料は？",
+    template: "{menu}を作るために必要な材料は？",
   });
 
   const llm = new OpenAI();
