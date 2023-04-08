@@ -47,5 +47,3 @@ export const runAgent = async () => {
   console.log("User3", thirdPrompt.template);
   console.log("Agent3", thirdRes.output);
 };
-
-runAgent();

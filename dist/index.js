@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const llms_1 = require("langchain/llms");
+const memory_1 = require("./memory");
 require("dotenv").config();
-const runLlm = async () => {
-    const llm = new llms_1.OpenAI({ temperature: 0.9 });
-    const res = await llm.call("自己紹介してください");
-    console.log(res);
-};
-runLlm();
+// runLlm();
+// runTemplate();
+// runChain();
+// runAgent();
+(0, memory_1.runMemory)();
 //# sourceMappingURL=index.js.map
