@@ -3,10 +3,14 @@ import { runTemplate } from "./template";
 import { runChain } from "./chain";
 import { runAgent } from "./agent";
 import { runMemory } from "./memory";
+import { runLoader } from "./loader";
+
 require("dotenv").config();
 
-// runLlm();
+runLlm();
 // runTemplate();
 // runChain();
 // runAgent();
-runMemory();
+// runMemory();
+// runLoader();
+// runLoader();
