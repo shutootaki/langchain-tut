@@ -1,9 +1,12 @@
-import { OpenAI } from "langchain/llms";
+import { OpenAI, Cohere } from "langchain/llms";
 
 // llm
 export const runLlm = async () => {
-  const llm = new OpenAI();
+  const gpt = new OpenAI();
+  const cohere = new Cohere();
 
-  const res = await llm.call("自己紹介してください");
-  console.log(res);
+  const res = await gpt.call("What your name?");
+  console.log("gpt: ", res);
+  const res2 = await cohere.call("What your name?");
+  console.log("cohere:", res2);
 };
